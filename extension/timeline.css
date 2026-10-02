@@ -1,0 +1,29 @@
+/*
+ * SPDX-FileCopyrightText: 2026 OukaroMF
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+/* Site classes provide the controls; scoped CSS adds only list layout/theme hooks. */
+.cctracker-timeline { box-sizing: border-box; margin: 12px 0; font: inherit; }
+.cctracker-timeline[hidden], .cctracker-timeline [hidden] { display: none !important; }
+.cctracker-timeline button { cursor: pointer; }
+.cctracker-bilibili { color: var(--text1, #18191c); font: 13px -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; }
+.cctracker-bilibili > .bui-area { width: 100%; }
+.cctracker-bilibili .bui-collapse-header { cursor: pointer; }
+.cctracker-bilibili .bui-collapse-header:focus-visible { outline: 2px solid var(--brand_blue, #00aeec); outline-offset: -2px; }
+.cctracker-bilibili .cctracker-timeline-body { box-sizing: border-box; width: 100%; background: var(--bg1, #fff); border: 1px solid var(--line_regular, #e3e5e7); border-top: 0; border-radius: 0 0 6px 6px; }
+.cctracker-timeline-controls { display: flex; justify-content: space-between; gap: 8px; padding: 10px 12px 0; align-items: center; }
+.cctracker-track-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cctracker-timeline-status { margin: 8px 12px; color: var(--cctracker-secondary, var(--text2, #61666d)); font-size: 12px; }
+.cctracker-timeline-list { position: relative; max-height: 420px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.cctracker-cue { display: flex; width: 100%; gap: 10px; border: 0; padding: 9px 12px; background: transparent; color: inherit; font: inherit; text-align: left; align-items: baseline; }
+.cctracker-cue:hover { background: var(--cctracker-hover, var(--graph_bg_regular, #f1f2f3)); }
+.cctracker-cue:focus-visible { outline: 2px solid var(--cctracker-accent, var(--brand_blue, #00aeec)); outline-offset: -2px; }
+.cctracker-cue-active { background: var(--cctracker-hover, var(--graph_bg_regular, #f1f2f3)); box-shadow: inset 3px 0 var(--cctracker-accent, var(--brand_blue, #00aeec)); }
+.cctracker-cue-time { color: var(--cctracker-accent, var(--brand_blue, #00aeec)); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cctracker-cue-words { min-width: 0; display: flex; flex-direction: column; gap: 3px; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.5; }
+.cctracker-cue-secondary { color: var(--cctracker-secondary, var(--text2, #61666d)); font-size: .9em; }
+.cctracker-follow { margin-left: 8px; padding: 0; border: 0; border-radius: 4px; background: transparent; color: inherit; font: inherit; width: 24px; height: 24px; display: inline-flex; vertical-align: middle; align-items: center; justify-content: center; }
+.cctracker-follow[aria-pressed="true"] { color: var(--brand_blue, #00aeec); }
+.cctracker-follow:hover { background: var(--graph_bg_regular, #f1f2f3); }
+.cctracker-follow svg { width: 24px; height: 24px; pointer-events: none; }

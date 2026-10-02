@@ -1,0 +1,44 @@
+# SPDX-FileCopyrightText: 2026 OukaroMF
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+name: Test and build extension
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  extension:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Test extension
+        run: node --test --test-isolation=none tests/*.test.mjs
+      - name: Package extension
+        run: |
+          mkdir -p dist
+          cd extension
+          python3 -m zipfile -c ../dist/cctracker-extension.zip * ../LICENSE ../THIRD_PARTY_NOTICES.md ../PRIVACY.md
+          cd ../dist
+          sha256sum cctracker-extension.zip > SHA256SUMS
+      - uses: actions/upload-artifact@v7
+        with:
+          name: cctracker-extension
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 30

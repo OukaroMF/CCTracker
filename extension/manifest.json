@@ -1,0 +1,75 @@
+{
+  "manifest_version": 3,
+  "name": "CCTracker",
+  "version": "0.2.5",
+  "description": "Subtitle Tricks with LyricSync.",
+  "homepage_url": "https://github.com/OukaroMF/CCTracker",
+  "minimum_chrome_version": "111",
+  "icons": {
+    "16": "icons/cctracker-16.png",
+    "48": "icons/cctracker-48.png",
+    "128": "icons/cctracker-128.png"
+  },
+  "permissions": [
+    "nativeMessaging",
+    "alarms"
+  ],
+  "background": {
+    "service_worker": "background.mjs",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "CCTracker · 等待字幕",
+    "default_icon": {
+      "16": "icons/waiting-16.png",
+      "32": "icons/waiting-32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.bilibili.com/*"
+      ],
+      "js": [
+        "timeline-core.js",
+        "page-tracks.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.bilibili.com/*"
+      ],
+      "js": [
+        "adapters.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.bilibili.com/*"
+      ],
+      "js": [
+        "timeline-core.js",
+        "timeline.js"
+      ],
+      "css": [
+        "timeline.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "youtube-transcript.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAr9gPh87nB2FMj6T2vruX/Kk10lkcptG4xC1p0h+W240W2mCFuvCKjI2x+qDrsadO9+k4tOk7CkhqHD1nd3e00dKJmOkf39YABNN80Kw1OsqLRKe9cXsWqnGq5fa3ORJVDHwkICskHXCTU4OasBRcBmjdPji9GqTtnM1Dh74IwKjn08FwA0LjlpDKou2AFCflGwdrEgqkt44SDjo1Aaqj9DjIAi+OSr4LfiwOPfpSaq2qQ9Dzfm2X+BlFiYyXYs9MUcfRbxNWy7ydD4ZGPuiW6xG1LZ8WfoW9COypdUiTN83uAP6k7ANEF6QMRM3T7JjRWp6l2IeVLmOQZPDZa4HHiQIDAQAB"
+}

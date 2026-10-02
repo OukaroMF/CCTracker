@@ -1,0 +1,19 @@
+{
+  "name": "cctracker",
+  "version": "0.2.5",
+  "private": true,
+  "author": "OukaroMF (https://github.com/OukaroMF)",
+  "homepage": "https://github.com/OukaroMF/CCTracker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OukaroMF/CCTracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OukaroMF/CCTracker/issues"
+  },
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-isolation=none tests/*.test.mjs"
+  }
+}
