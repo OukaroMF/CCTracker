@@ -32,10 +32,8 @@ jobs:
       - name: Package extension
         run: |
           mkdir -p dist
-          cd extension
-          python3 -m zipfile -c ../dist/cctracker-extension.zip * ../LICENSE ../THIRD_PARTY_NOTICES.md ../PRIVACY.md
-          cd ../dist
-          sha256sum cctracker-extension.zip > SHA256SUMS
+          cp -r extension/* dist/
+          cp LICENSE THIRD_PARTY_NOTICES.md PRIVACY.md dist/
       - uses: actions/upload-artifact@v7
         with:
           name: cctracker-extension
